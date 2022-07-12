@@ -1,0 +1,11 @@
+{
+  "name": "@appjusto/dates",
+  "version": "0.1.0",
+  "description": "Functions related with dates",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AppJusto",
+  "license": "Apache-2.0"
+}
