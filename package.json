@@ -2,10 +2,30 @@
   "name": "@appjusto/dates",
   "version": "0.1.0",
   "description": "Functions related with dates",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node lib/index.js",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npm version ${VERSION:-patch} && npm publish --access public",
+    "postversion": "git push && git push --tags && git fetch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/appjusto/dates.git"
   },
   "author": "AppJusto",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@appjusto/types": "^7.4.1",
+    "dayjs": "^1.11.3",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.182",
+    "typescript": "^4.7.4"
+  }
 }
