@@ -1,5 +1,5 @@
 import { toNumber } from 'lodash';
-import { Dayjs } from '../Dayjs';
+import { Dayjs } from '../../Dayjs';
 
 export const parseScheduleHour = (value: string) => {
   let hour = toNumber(value.slice(0, 2));
@@ -9,11 +9,17 @@ export const parseScheduleHour = (value: string) => {
 
 export const formatScheduleHour = (date: Date) => Dayjs(date).format('HHmm');
 
-export const dateWithScheduleHour = (date: Date, value: string) => {
+export const dateWithScheduleHour = (
+  date: Date,
+  value: string,
+  offsetTimezone?: string
+) => {
   const [hour, minute] = parseScheduleHour(value);
-  return Dayjs(date)
+  let day = Dayjs(date)
     .set('hour', hour)
     .set('minute', minute)
     .set('second', 0)
-    .toDate();
+    .set('millisecond', 0);
+  if (offsetTimezone) day = day.tz(offsetTimezone, true);
+  return day.toDate();
 };

@@ -1,3 +1,13 @@
-export { formatScheduleHour, parseScheduleHour } from './business/hours';
-export { scheduleFromDate } from './business/schedule';
-export { shouldBeOpened as shouldBusinessBeOpen } from './business/shouldBeOpened';
+export {
+  getDayIndex,
+  getDaySchedule,
+  scheduleFromDate,
+} from './business/schedule';
+export { getNextDateSlots } from './business/schedule/getNextDateSlots';
+export { getNextOpeningDates } from './business/schedule/getNextOpeningDates';
+export {
+  dateWithScheduleHour,
+  formatScheduleHour,
+  parseScheduleHour,
+} from './business/schedule/hours';
+export { shouldBeOpened as shouldBusinessBeOpen } from './business/schedule/shouldBeOpened';
