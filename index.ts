@@ -11,3 +11,5 @@ export {
   parseScheduleHour,
 } from './business/schedule/hours';
 export { shouldBeOpened as shouldBusinessBeOpen } from './business/schedule/shouldBeOpened';
+export { getFirstDayOfCurrentMonth } from './days';
+export { dateWithUpdatedTime } from './time';
