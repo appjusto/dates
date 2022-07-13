@@ -10,7 +10,7 @@ export const dateWithUpdatedTime = (
   { hours, minutes }: DateWithUpdatedTimeOptions
 ) => {
   let day = Dayjs(date).set('second', 0).set('millisecond', 0);
-  if (hours) day = day.set('minute', hours);
-  if (minutes) day = day.set('minute', minutes);
+  if (hours !== undefined) day = day.set('minute', hours);
+  if (minutes !== undefined) day = day.set('minute', minutes);
   return day.toDate();
 };
