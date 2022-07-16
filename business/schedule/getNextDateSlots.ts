@@ -13,15 +13,14 @@ export const getNextDateSlots = (
       const f = Dayjs(
         dateWithScheduleHour(date, from, 'America/Sao_Paulo')
       ).add(i, 'day');
-      if (!f.isAfter(date)) return r;
-      const r2: Date[] = [];
       const t = Dayjs(dateWithScheduleHour(date, to, 'America/Sao_Paulo')).add(
         i,
         'day'
       );
+      const r2: Date[] = [];
       let n = f.clone().add(interval, 'minute');
       while (n.isBefore(t)) {
-        r2.push(n.toDate());
+        if (n.diff(date, 'minute') > interval) r2.push(n.toDate());
         n = n.clone().add(interval, 'minute');
       }
       return [...r, ...r2];
