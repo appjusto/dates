@@ -7,9 +7,14 @@ import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import timezone from 'dayjs/plugin/timezone';
+import updateLocale from 'dayjs/plugin/updateLocale';
 import utc from 'dayjs/plugin/utc';
 import weekday from 'dayjs/plugin/weekday';
 
+dayjs.extend(updateLocale);
+dayjs.updateLocale('pt', {
+  weekStart: 1,
+});
 dayjs.locale('pt');
 dayjs.extend(calendar);
 dayjs.extend(duration);

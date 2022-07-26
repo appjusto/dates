@@ -8,6 +8,6 @@ export {
 } from './business/schedule/hours';
 export { shouldBeOpened as shouldBusinessBeOpen } from './business/schedule/shouldBeOpened';
 export { Dayjs } from './Dayjs';
-export { getDayIndex, getStartOfTheMonth, getStartOfTheWeek } from './days';
+export { getDayIndex } from './days';
 export { formatDate, formatRelativeDate } from './formatters';
 export { dateWithUpdatedTime } from './time';
