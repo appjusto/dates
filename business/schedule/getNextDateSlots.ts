@@ -1,13 +1,19 @@
-import { BusinessSchedule } from '@appjusto/types';
+import { Business } from '@appjusto/types';
+import { scheduleFromDate } from '.';
 import { Dayjs } from '../../Dayjs';
 import { dateWithScheduleHour } from './hours';
 
 export const getNextDateSlots = (
-  schedule: BusinessSchedule,
-  date: Date,
+  business: Business,
+  reference: Date,
   interval: number = 30,
+  weeks: number = 1,
   limit: number = Number.MAX_SAFE_INTEGER
 ) => {
+  const schedule = business.schedules
+    ? scheduleFromDate(business.schedules, reference, weeks)
+    : [];
+  const minHours = business.minHoursForScheduledOrders ?? 0;
   let total = 0;
   return schedule.reduce<Date[][]>(
     (result, { checked, schedule: daySchedule }, i) => {
@@ -15,16 +21,17 @@ export const getNextDateSlots = (
       const dates = daySchedule.reduce((r, { from, to }) => {
         if (total >= limit) return r;
         const f = Dayjs(
-          dateWithScheduleHour(date, from, 'America/Sao_Paulo')
+          dateWithScheduleHour(reference, from, 'America/Sao_Paulo')
         ).add(i, 'day');
         const t = Dayjs(
-          dateWithScheduleHour(date, to, 'America/Sao_Paulo')
+          dateWithScheduleHour(reference, to, 'America/Sao_Paulo')
         ).add(i, 'day');
         const r2: Date[] = [];
         let n = f.clone().add(interval, 'minute');
         while (n.isBefore(t)) {
           if (total >= limit) break;
-          if (n.diff(date, 'minute') >= interval) {
+          const diff = n.diff(reference, 'minute');
+          if (diff >= interval && diff > minHours * 60) {
             total++;
             r2.push(n.toDate());
           }
