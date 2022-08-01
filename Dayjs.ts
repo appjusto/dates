@@ -14,6 +14,12 @@ import weekday from 'dayjs/plugin/weekday';
 dayjs.extend(updateLocale);
 dayjs.updateLocale('pt', {
   weekStart: 1,
+  calendar: {
+    sameDay: '[hoje]',
+    nextDay: '[amanhã]',
+    nextWeek: 'dddd',
+    sameElse: 'DD/MM/YYYY',
+  },
 });
 dayjs.locale('pt');
 dayjs.extend(calendar);
