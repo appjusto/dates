@@ -12,12 +12,3 @@ export const formatDate = (
   date: Date,
   pattern: DateFormatPattern = 'datetime'
 ) => Dayjs(date).format(getPattern(pattern));
-
-export const formatRelativeDate = (date: Date, reference: Date) =>
-  Dayjs(date)
-    .calendar(reference, {
-      sameDay: '[hoje]',
-      nextDay: '[amanhã]',
-      nextWeek: 'dddd',
-    })
-    .toLocaleLowerCase();

@@ -9,5 +9,5 @@ export {
 export { shouldBeOpened as shouldBusinessBeOpen } from './business/schedule/shouldBeOpened';
 export { Dayjs } from './Dayjs';
 export { getDayIndex } from './days';
-export { formatDate, formatRelativeDate } from './formatters';
+export { formatDate } from './formatters';
 export { dateWithUpdatedTime } from './time';
