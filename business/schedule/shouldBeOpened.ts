@@ -18,6 +18,14 @@ export const shouldBeOpened = (
       const from = Dayjs(dateWithScheduleHour(at, value.from)).tz(tz, true);
       const to = Dayjs(dateWithScheduleHour(at, value.to)).tz(tz, true);
       const date = Dayjs.tz(at);
+      console.log(
+        'shouldBeOpened',
+        date.toISOString(),
+        from.toISOString(),
+        to.toISOString(),
+        date.isSameOrAfter(from),
+        date.isSameOrBefore(to)
+      );
       return date.isSameOrAfter(from) && date.isSameOrBefore(to);
     }) !== undefined
   );
