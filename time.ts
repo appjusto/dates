@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { Dayjs } from './Dayjs';
 
 interface DateWithUpdatedTimeOptions {
@@ -6,7 +7,7 @@ interface DateWithUpdatedTimeOptions {
 }
 
 export const dateWithUpdatedTime = (
-  date: Date,
+  date: Date | dayjs.Dayjs,
   { hours, minutes }: DateWithUpdatedTimeOptions
 ) => {
   let day = Dayjs(date).set('second', 0).set('millisecond', 0);

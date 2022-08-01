@@ -1,7 +1,4 @@
 import dayjs from 'dayjs';
+import { Dayjs } from './Dayjs';
 
-export const getDayIndex = (date: Date | dayjs.Dayjs) => {
-  // using 0 for mondays instead of sundays
-  const day = date instanceof Date ? date.getDay() : date.weekday();
-  return day === 0 ? 6 : day - 1;
-};
+export const getDayIndex = (date: Date | dayjs.Dayjs) => Dayjs(date).weekday();

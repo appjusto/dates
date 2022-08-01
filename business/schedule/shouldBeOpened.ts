@@ -2,7 +2,8 @@ import { BusinessSchedule } from '@appjusto/types';
 import { isEmpty } from 'lodash';
 import { getDaySchedule } from '.';
 import { Dayjs } from '../../Dayjs';
-import { dateWithScheduleHour } from './hours';
+import { dateWithUpdatedTime } from '../../time';
+import { parseScheduleHour } from './hours';
 
 export const shouldBeOpened = (
   schedule: BusinessSchedule,
@@ -10,14 +11,21 @@ export const shouldBeOpened = (
   tz: string = 'America/Sao_Paulo'
 ) => {
   if (!schedule) return false;
-  const daySchedule = getDaySchedule(schedule, at);
+  const date = Dayjs.tz(at, tz);
+  console.log('shouldBeOpened', date);
+  const daySchedule = getDaySchedule(schedule, date);
   if (!daySchedule || !daySchedule.checked) return false;
   if (isEmpty(daySchedule.schedule)) return true;
   return (
     daySchedule.schedule.find((value) => {
-      const from = Dayjs(dateWithScheduleHour(at, value.from)).tz(tz, true);
-      const to = Dayjs(dateWithScheduleHour(at, value.to)).tz(tz, true);
-      const date = Dayjs.tz(at);
+      const from = dateWithUpdatedTime(date, {
+        hours: parseScheduleHour(value.from)[0],
+        minutes: parseScheduleHour(value.from)[1],
+      });
+      const to = dateWithUpdatedTime(date, {
+        hours: parseScheduleHour(value.to)[0],
+        minutes: parseScheduleHour(value.to)[1],
+      });
       console.log(
         'shouldBeOpened',
         date.toISOString(),
