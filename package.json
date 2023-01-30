@@ -1,6 +1,6 @@
 {
   "name": "@appjusto/dates",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Functions related with dates",
   "main": "lib/index.js",
   "directories": {
