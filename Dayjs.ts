@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 // @ts-ignore
 import 'dayjs/locale/pt';
 import calendar from 'dayjs/plugin/calendar';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import duration from 'dayjs/plugin/duration';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
@@ -30,5 +31,6 @@ dayjs.extend(relativeTime);
 dayjs.extend(timezone);
 dayjs.extend(utc);
 dayjs.extend(weekday);
+dayjs.extend(customParseFormat);
 
 export const Dayjs = dayjs;
