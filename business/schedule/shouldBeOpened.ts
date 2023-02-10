@@ -12,7 +12,6 @@ export const shouldBeOpened = (
 ) => {
   if (!schedule) return false;
   const date = Dayjs.tz(at, tz);
-  console.log('shouldBeOpened', date);
   const daySchedule = getDaySchedule(schedule, date);
   if (!daySchedule || !daySchedule.checked) return false;
   if (isEmpty(daySchedule.schedule)) return true;
@@ -26,14 +25,6 @@ export const shouldBeOpened = (
         hours: parseScheduleHour(value.to)[0],
         minutes: parseScheduleHour(value.to)[1],
       });
-      console.log(
-        'shouldBeOpened',
-        date.toISOString(),
-        from.toISOString(),
-        to.toISOString(),
-        date.isSameOrAfter(from),
-        date.isSameOrBefore(to)
-      );
       return date.isSameOrAfter(from) && date.isSameOrBefore(to);
     }) !== undefined
   );
