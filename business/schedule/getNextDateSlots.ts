@@ -8,7 +8,7 @@ export const getNextDateSlots = (
   reference: Date,
   interval: number = 30,
   weeks: number = 1,
-  limit: number = Number.MAX_SAFE_INTEGER
+  limit: number = 1000000
 ) => {
   const schedule = business.schedules
     ? scheduleFromDate(business.schedules, reference, weeks)
