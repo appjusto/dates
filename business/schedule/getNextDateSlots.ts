@@ -33,7 +33,7 @@ export const getNextDateSlots = (
         while (n.isBefore(t)) {
           if (total >= limit) break;
           const diff = n.diff(reference, 'minute');
-          if (diff >= interval && diff > minHours * 60) {
+          if (diff > minHours * 60) {
             total++;
             r2.push(n.toDate());
           }
