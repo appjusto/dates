@@ -27,7 +27,9 @@ export const getNextDateSlots = (
           dateWithScheduleHour(reference, to, 'America/Sao_Paulo')
         ).add(i, 'day');
         const r2: Date[] = [];
-        let n = f.clone().add(interval, 'minute');
+        let n = business.averageCookingTime
+          ? f.clone().add(business.averageCookingTime, 'second')
+          : f.clone().add(interval, 'minute');
         while (n.isBefore(t)) {
           if (total >= limit) break;
           const diff = n.diff(reference, 'minute');
