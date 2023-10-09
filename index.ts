@@ -1,13 +1,13 @@
-export { getDaySchedule, scheduleFromDate } from './business/schedule';
-export { getNextDateSlots } from './business/schedule/getNextDateSlots';
-export { getNextOpeningDates } from './business/schedule/getNextOpeningDates';
-export {
+export type { Dayjs } from './Dayjs';
+export type { getDaySchedule, scheduleFromDate } from './business/schedule';
+export type { getNextDateSlots } from './business/schedule/getNextDateSlots';
+export type { getNextOpeningDates } from './business/schedule/getNextOpeningDates';
+export type {
   dateWithScheduleHour,
   formatScheduleHour,
   parseScheduleHour,
 } from './business/schedule/hours';
-export { shouldBeOpened as shouldBusinessBeOpen } from './business/schedule/shouldBeOpened';
-export { Dayjs } from './Dayjs';
-export { getDayIndex } from './days';
-export { formatDate } from './formatters';
-export { dateWithUpdatedTime } from './time';
+export type { shouldBeOpened as shouldBusinessBeOpen } from './business/schedule/shouldBeOpened';
+export type { getDayIndex } from './days';
+export type { formatDate } from './formatters';
+export type { dateWithUpdatedTime } from './time';
