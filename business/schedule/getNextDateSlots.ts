@@ -1,7 +1,8 @@
 import { PublicBusiness } from '@appjusto/types';
 import { scheduleFromDate } from '.';
 import { Dayjs } from '../../Dayjs';
-import { dateWithScheduleHour } from './hours';
+import { dateWithUpdatedTime } from '../../time';
+import { parseScheduleHour } from './hours';
 
 export const getNextDateSlots = (
   business: PublicBusiness,
@@ -20,12 +21,20 @@ export const getNextDateSlots = (
       if (!checked) return result;
       const dates = daySchedule.reduce((r, { from, to }) => {
         if (total >= limit) return r;
+        const [fromHours, fromMinutes] = parseScheduleHour(from);
         const f = Dayjs(
-          dateWithScheduleHour(reference, from, 'America/Sao_Paulo')
-        ).add(i, 'day');
+          dateWithUpdatedTime(Dayjs(reference).add(i, 'day'), {
+            hours: fromHours,
+            minutes: fromMinutes,
+          })
+        );
+        const [toHours, toMinutes] = parseScheduleHour(to);
         const t = Dayjs(
-          dateWithScheduleHour(reference, to, 'America/Sao_Paulo')
-        ).add(i, 'day');
+          dateWithUpdatedTime(Dayjs(reference).add(i, 'day'), {
+            hours: toHours,
+            minutes: toMinutes,
+          })
+        );
         const r2: Date[] = [];
         let n = business.averageCookingTime
           ? f.clone().add(business.averageCookingTime, 'second')
