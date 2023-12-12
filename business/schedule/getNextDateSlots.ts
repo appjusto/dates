@@ -1,10 +1,10 @@
-import { Business } from '@appjusto/types';
+import { PublicBusiness } from '@appjusto/types';
 import { scheduleFromDate } from '.';
 import { Dayjs } from '../../Dayjs';
 import { dateWithScheduleHour } from './hours';
 
 export const getNextDateSlots = (
-  business: Business,
+  business: PublicBusiness,
   reference: Date,
   interval: number = 30,
   weeks: number = 1,

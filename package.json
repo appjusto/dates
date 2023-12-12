@@ -20,7 +20,7 @@
   "author": "AppJusto",
   "license": "Apache-2.0",
   "dependencies": {
-    "@appjusto/types": "^21.5.0",
+    "@appjusto/types": "^23.11.22",
     "dayjs": "^1.11.3",
     "lodash": "^4.17.21"
   },
